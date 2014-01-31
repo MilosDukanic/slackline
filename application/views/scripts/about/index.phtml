@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="span8">
+        <div class="slider-wrapper theme-default">
+            <div id="nivo-slider" class="nivoSlider">
+                <img src="/img/slider/about/slide1.jpg" alt="Image Alternative text" title="First highline in Serbia" data-thumb="424" />
+                <img src="/img/slider/about/slide2.jpg" alt="Image Alternative text" title="Outdoor slacking" data-thumb="424" />
+                <img src="/img/slider/about/slide3.jpg" alt="Image Alternative text" title="Outdoor slacking" data-thumb="424" />
+                <img src="/img/slider/about/slide4.jpg" alt="Image Alternative text" title="Heighline in Serbia" data-thumb="424" />
+                <img src="/img/slider/about/slide5.jpg" alt="Image Alternative text" title="Bee action :)" data-thumb="424" />
+                <img src="/img/slider/about/slide6.jpg" alt="Image Alternative text" title="Longline" data-thumb="424" />
+                <img src="/img/slider/about/slide7.jpg" alt="Image Alternative text" title="Outdoor slacking" data-thumb="424" />
+                <img src="/img/slider/about/slide8.jpg" alt="Image Alternative text" title="So pro" data-thumb="424" />
+                <img src="/img/slider/about/slide9.jpg" alt="Image Alternative text" title="Myrtle Beach" data-thumb="424" />
+                <img src="/img/slider/about/slide10.jpg" alt="Image Alternative text" title="Sendy jump" data-thumb="424" />
+            </div>
+        </div>
+    </div>
+    <div class="span4">
+        <h3>About SlackLife SRB</h3>
+        <p>Urban Slackline! Our story begins in the summer 2012th year. when friends climbing in Thailand brought a very fun toy - slackline. Boki and Nemanja were already rehearsed walking and quite a few tricks in this simple but miraculous made. 
+            It created a whole group of young enthusiasts, mostly climbers, who almost every day asking slackline in the exercise. Balance, control of mind and body, enjoy ...! In Belgrade, we have only twenty.<br><br>
+            Urban Slackline! Our story begins in the summer 2012th year. when friends climbing in Thailand brought a very fun toy - slackline. Boki and Nemanja were already rehearsed walking and quite a few tricks in this simple but miraculous made. 
+            It created a whole group of young enthusiasts, mostly climbers, who almost every day asking slackline in the exercise. Balance, control of mind and body, enjoy ...! In Belgrade, we have only twenty.<br><br>
+        
+        </p>
+    </div>
+</div>
+<div class="gap"></div>
+<div class="row row-wrap">
+    <h4>Our team</h4>
+    <?php 
+        foreach ($this->users as $value) {
+            echo "<div class='span3'>
+                        <div class='team-member'>
+                            <a href='/profile/index/user/".$value->getUsername()."'><img src='/img/users/profile/".$value->getImg()."' alt='Image Alternative text' title='".$value->getUsername()."' data-toggle='tooltip' /></a>
+                            <h5 class='title'>".$value->getName()." - <a href='/profile/index/user/".$value->getUsername()."'>".$value->getUsername()."</a></h5>
+                        </div>
+                    </div>";
+        }
+    ?>
+    
+</div>

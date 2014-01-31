@@ -1,0 +1,754 @@
+<script type="text/javascript">
+     var objectAdmin;
+    $('.administrator_modefy_element legend').click(function(){
+      if($(this).parent().index()!=objectAdmin){
+        $('.administrator_modefy_element form').slideUp();
+        $(this).parent().find('form').slideToggle();
+        objectAdmin=$(this).parent().index();
+      }
+      else{
+          $(this).parent().find('form').slideUp();
+          objectAdmin=-1;
+      }
+    });
+    document.getElementById('TrickType').onsubmit=function() {
+        document.getElementById('TrickType').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('trick').onsubmit=function() {
+        document.getElementById('trick').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('gear').onsubmit=function() {
+        document.getElementById('gear').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('slackline').onsubmit=function() {
+        document.getElementById('slackline').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('setup').onsubmit=function() {
+        document.getElementById('setup').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('slacklineRating').onsubmit=function() {
+        document.getElementById('slacklineRating').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('brand').onsubmit=function() {
+        document.getElementById('brand').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+</script>
+<script src="/js/ajaxScript.js"></script>
+<fieldset class='modify_elements administrator_modefy_element' id='newMenu'>
+    <legend>Menu</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' class='ajaxTableName' value='menu'/>
+        <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->menu as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getText()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent' id='menu'>
+            <tr>
+                <td><input type='text' placeholder='Menu text' id='menuText'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Menu controler' id='menuController'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Menu action' id='menuAction'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id='menuRola'>
+                        <option value='0'>Everyone can see...</option>
+                        <?php
+                            foreach ($this->roles as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr><td><input type='text' placeholder='Menu position' id='menuPosition'/></td></tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newTrickType'>
+    <legend>Trick type</legend>
+    <form action='ajax/save' method='POST' id='TrickType' enctype="multipart/form-data">
+        <input type='hidden' value='trickType' name='table' class='ajaxTableName' 
+        <table>
+            <tr>
+                <td>
+                    <select name='id' class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->trickType as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class="ajaxContent">
+            <tr>
+                <td><input type='text' placeholder='Trick type name' name='trickTypeName' id='trickTypeName'/></td>
+            </tr>
+             <tr>
+                <td>
+                    <span>Trick type image </span> <input type='file' name='trickTypeImage' id='trickTypeImage' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" src="" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary ajaxFileSubmit'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newTrickWeight'>
+    <legend>Trick weight</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' class='ajaxTableName' value='trickWeight'/>
+        <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->trickWeight as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='text' placeholder='Trick weight name' id='trickWeightName'/></td>
+            </tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newTrick'>
+    <legend>Trick</legend>
+    <form action='ajax/save' method='POST' id='trick' enctype="multipart/form-data" >
+        <input type='hidden' class='ajaxTableName' value='trick' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->trick as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='trickType'>
+                        <option>Choose type...</option>
+                        <?php
+                            foreach ($this->trickType as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='trickMark'>
+                        <option>Choose mark...</option>
+                        <?php
+                            foreach ($this->trickWeightMark as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Trick name' name='trickName'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Trick description' name='trickDescription'></textarea></td>
+            </tr>
+            <tr><td><input type='text' placeholder='Trick video' name='trickVideo'/></td></tr>
+             <tr>
+                <td>
+                    <span>Trick image </span> <input type='file' name='trickImage' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newTrickWeightMark'>
+    <legend>Trick weight mark</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='trickWeightMark' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->trickWeightMark as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='type' id='trickWeightMarkWeight'>
+                        <option value='0'>Choose Weight...</option>
+                        <?php
+                            foreach ($this->trickWeight as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Trick weight mark name' id='trickWeightMarkName'/></td>
+            </tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newGear'>
+    <legend>Slackline kit</legend>
+    <form action='ajax/save' method='POST' id='gear' enctype="multipart/form-data">
+        <input type='hidden' value='gear' class='ajaxTableName' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class="ajaxItemId" name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->gear as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class="ajaxContent">
+            <tr>
+                <td><input type='text' placeholder='Slackline kit name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline kit description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline kit specification' name='specification'></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Kit image </span> <input type='file' name='image'/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newSlackline'>
+    <legend>Slackline</legend>
+    <form action='ajax/save' method='POST' id='slackline' enctype="multipart/form-data">
+        <input type='hidden' value='slackline' class='ajaxTableName' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class="ajaxItemId" name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->slackline as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getModel()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='brand'>
+                        <option>Choose Brand...</option>
+                        <?php
+                            foreach ($this->brand as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='rating'>
+                        <option>Choose Rating...</option>
+                        <?php
+                            foreach ($this->rating as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Slackline model' name='model'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline pluses' name='plus'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline minuses' name='minus'></textarea></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline length in 'ft' and 'm'" name='length'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline price in '$'" name='price'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline video url" name='video'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='width'>
+                        <option>Choose Width...</option>
+                        <option>1"</option>
+                        <option>1.5"</option>
+                        <option>2"</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Slackline </span> <input type='file' name='slacklineImg'/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>For image </span> <input type='file' name='forImg'/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" src="" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newSetup'>
+    <legend>Setup</legend>
+    <form action='ajax/save' method='POST' id='setup' enctype="multipart/form-data">
+        <input type='hidden' value='setup' class='ajaxTableName' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->setup as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='type'>
+                        <option>Choose type...</option>
+                        <?php
+                            foreach ($this->setupType as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Setup name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Setup for' name='for'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup needed' name='needed'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup warning' name='warning'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Embede video code, ONLY URL with "https:"' name='video'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Element ID' name='divId'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Image </span> <input type='file' name='image' />
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newTypeSetup'>
+    <legend>Setup type</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='typeSetup' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->setupType as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='text' placeholder='Type name' name='name' id='typeSetupName'/></td>
+            </tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newSlacklineRating'>
+    <legend>Slackline rating</legend>
+    <form action='ajax/save' method='POST' id='slacklineRating' enctype="multipart/form-data">
+        <input type='hidden' value='slacklineRating' class='ajaxTableName' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->rating as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='text' placeholder='Rating name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Rating alt name for image' name='alt'/></td>
+            </tr>
+             <tr>
+                <td>
+                    <span>Rating image </span> <input type='file' name='image'/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newBrand'>
+    <legend>Brand</legend>
+    <form action='ajax/save' method='POST' id='brand' enctype="multipart/form-data">
+        <input type='hidden' value='brand' class='ajaxTableName' name='table'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->brand as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='text' placeholder='Brand name' name='name'/></td>
+            </tr>
+             <tr>
+                <td>
+                    <span>Brand image </span> <input type='file' name='image'/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" src="" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newDoneTrick'>
+    <legend>Done tricks</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='doneTricks' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->doneTricks as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getUsername()."-".$value->getTrickName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='type' id='doneTrickUser'>
+                        <option value='0'>Choose user...</option>
+                        <?php
+                            foreach ($this->users as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getUsername()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='mark' id='doneTrickTrick'>
+                        <option value='0'>Choose Trick...</option>
+                        <?php
+                            foreach ($this->trick as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newRoles'>
+    <legend>Roles</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='roles' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->roles as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='text' placeholder='Role name' name='name'id='rolesName'/></td>
+            </tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newGearComments'>
+    <legend>Gear comments</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='gearComment' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class="ajaxItemId">
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->gearComments as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getUsername()."-".$value->getGearName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='gear' id='gearCommentGear'>
+                        <option value='0'>Choose Gear...</option>
+                        <?php
+                            foreach ($this->gear as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='user' id='gearCommentUser'>
+                        <option value='0'>Choose user...</option>
+                        <?php
+                            foreach ($this->users as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Comment text' name='text' id='gearCommentText'></textarea></td>
+            </tr>
+            <tr><td><label class='active_user_editing'>Date of posting</label><input type='datetime-local' name='date'  placeholder='Date format "YYYY-MM-DDTH:i"' id='gearCommentDate'/></td></tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements administrator_modefy_element' id='newSlacklineComments'>
+    <legend>Slackline comments</legend>
+    <form action='#' method='POST'>
+        <input type='hidden' value='commentSlackline' class='ajaxTableName'/>
+         <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId'>
+                        <option value='0'>New item</option>
+                        <?php
+                            foreach ($this->slacklineComments as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getUsername()."-".$value->getSlacklineModel()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>   
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td><input type='hidden' name='id' value='0'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='slackline' id='slacklineCommentSlackline'>
+                        <option value='0'>Choose Slackline...</option>
+                        <?php
+                            foreach ($this->slackline as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getModel()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='user' id='slacklineCommentUser'>
+                        <option value='0'>Choose user...</option>
+                        <?php
+                            foreach ($this->users as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Comment text' name='text' id='slacklineCommentText'></textarea></td>
+            </tr>
+            <tr><td><label class='active_user_editing'>Date of posting</label><input type='datetime-local' name='date'  placeholder='Date format "YYYY-MM-DDTH:i"' id='slacklineCommentDate'/></td></tr>
+        </table>
+        <input type='button' value='Save' class='btn btn-primary ajaxSave'/>
+    </form>
+</fieldset>

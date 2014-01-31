@@ -1,0 +1,98 @@
+<div class='gear_item'>
+    <?php
+        if(count($this->slackline)==1){
+            foreach ($this->slackline as $value) {
+                $id=$value->getId();
+                echo "    
+                    <div class='localgym'>
+                        <div>
+                            <h3>".$value->getIdBrand()." ".$value->getModel()."</h3> 
+                            <img src='/img/slacklines/".strtolower($value->getImage())."' alt='".$value->getIdBrand()." ".$value->getModel()." slackline'  class='img_gear'/>
+                            <p><b>Our rating:</b> <img src='/img/rating/".$value->getRatingImg()."' alt='".$value->getRatingAlt()."' class='slackline_rating'></p>
+                            <p><b>Price:</b> ".$value->getPrice()."</p>
+                            <p>
+                                ".$value->getDescription()."
+                            </p><br>
+                        </div>
+                        <div id='slackline_additional'>
+                            <div class='slackline_additional_elements'>
+                                <p>+</p>
+                                <ul>
+                                    ".$value->getPlus()."
+                                </ul>
+                            </div>
+                            <div class='slackline_additional_elements red'>
+                                <p>-</p>
+                                <ul>
+                                    ".$value->getMinus()."
+                                </ul>   
+                            </div>
+                            <div class='slackline_additional_elements'>
+                                <p>Specification</p>
+                                <ul>
+                                    <li>Brand: ".$value->getIdBrand()."</li>
+                                    <li>Width: ".$value->getWidth()."</li>
+                                    <li>Length: ".$value->getLength()."</li>
+                                 </ul>
+                            </div>
+                            <img src='/img/slacklines/slackline_for/".$value->getForImg()."' alt='".$value->getIdBrand()." ".$value->getModel()." slackline review'>
+                            <br><br>
+                            <p>Watch video about <a href='".$value->getVideo()."' target='_blank'>".$value->getModel()."</a></p>
+                        </div>
+                    </div>";
+            }
+            if($this->isLoged!=null){
+                echo "<div id='gearComments' class='span12'>
+                        <div class='comment_box_wrapper span12'>
+                            <form action='/ajax/save' method='POST'>
+                                <input type=\"hidden\" value=\"commentSlackline\" name=\"table\" class=\"user\"/>
+                                <input type=\"hidden\" value=\"0\" name=\"id\" class=\"user\"/>
+                                <input type=\"hidden\" value=\"{$this->isLoged}\" name=\"user\" class=\"user\"/>
+                                <input type=\"hidden\" value=\"1\" name=\"comment\" class=\"user\"/>
+                                <input type=\"hidden\" value=\"$id\" name=\"slackline\" class=\"slackline\"/>
+                                <input type=\"hidden\" value=\"{$this->slacklineModel}\" name=\"slacklineName\" class=\"slacklineName\"/>
+                                <textarea placeholder='Writte a comment...' name=\"text\"></textarea>
+                                <input type='submit' value='Reply' class='btn btn-primary saveComment'/>
+                            </form>
+                    </div>";
+            }
+                foreach ($this->comments as $value) {
+                    echo "<div class='row one_comment'>
+                            <input type='hidden' name='comment' value='".$value->getId()."' class='comment'/>
+                            <img src='/img/users/profile/".$value->getUserImg()."' alt='".$value->getUsername()."'/>
+                            <div class='one_comment_content'>";
+                        if($this->isLoged==$value->getUser()){
+                            echo "<img src='/img/delete_icon.png' class='delete_comment_icon' data-toggle=\"tooltip\" title='Click to remove' />";
+                        }
+                                echo "<div class='comment_username'><b><a href='#'>".$value->getUsername()."</a></b> said ".date('z',time()-$value->getDate())." days ago:</div>
+                                <div class='comment_date'>".date('F d\t\h,Y \a\t h:i ',$value->getDate())."</div>
+                                <div class='comment_text'>".$value->getText()."</div>
+
+                            </div>
+                        </div>";
+                }
+            echo "</div>  ";
+        }else{
+            foreach ($this->slackline as $value) {
+                $id=$value->getId();
+                echo "    
+                    <div class='localgym'>
+                        <div>
+                            <h3><a href='/gear/slackline/type/".strtolower($value->getModel())."'>".$value->getIdBrand()." ".$value->getModel()."</a></h3> 
+                            <img src='/img/slacklines/".strtolower($value->getImage())."' alt='".$value->getIdBrand()." ".$value->getModel()." slackline'  class='img_gear'/>
+                            <p><b>Our rating:</b> <img src='/img/rating/".$value->getRatingImg()."' alt='".$value->getRatingAlt()."' class='slackline_rating'></p>
+                            <p><b>Price:</b> ".$value->getPrice()."</p>
+                            <p>
+                                ".$value->getDescription()."
+                            </p><br>
+                        </div>
+                        <div id='slackline_additional'>
+                            
+                            <p>Watch video about <a href='".$value->getVideo()."' target='_blank'>".$value->getModel()."</a></p>
+                        </div>
+                    </div>";
+            }
+        }
+    ?>
+
+ </div>

@@ -1,0 +1,127 @@
+<?php
+    $username='';
+    foreach ($this->userBasicInfo as $value) {
+        $username=$value->getUsername();
+    }
+?>
+<div class="row">
+    <div class='profile_picture' data-toggle="tooltip" title="<?=$username?>">
+        <?php
+            $id='';
+            foreach ($this->userBasicInfo as $value) {
+                $id=$value->getId();
+                echo"<img src='/img/users/profile/".$value->getImg()."' alt='".$value->getName()." profile picture'>";
+            }
+        ?>
+    </div>
+    <fieldset class='profile_info'>
+        <legend>Basic info</legend>
+            <table class='otherProfileView'>
+                <?php
+                    $user=$this->guest;
+                    foreach ($this->userBasicInfo as $value) {
+                        if($value->getPrivacy()==1){
+                            echo "<tr><td>Full Name:</td><td>".$value->getName()."</td></tr>
+                                <tr><td>Username:</td><td>".$value->getUsername()."</td></tr>
+                                <tr><td>Email:</td><td>".$value->getEmail()."</td></tr>";
+                         }else{
+                             if(isset($user)){
+                                echo "<tr><td>Full Name:</td><td>".$value->getName()."</td></tr>
+                                   <tr><td>Username:</td><td>".$value->getUsername()."</td></tr>
+                                   <tr><td>Email:</td><td>".$value->getEmail()."</td></tr>";
+                            }
+                            else{
+                                echo "Sorry but this user does not want to share this informations with you!!!";
+                            }
+                        }
+                    }
+                ?>
+            </table>
+    </fieldset>
+    <fieldset class='profile_info profile_info_aditional'>
+        <legend>Additional info</legend>
+        <table class="otherProfileView">
+                <?php 
+                    if($this->userAditionalInfo!=NULL){
+                        foreach($this->userAditionalInfo as $value){
+                            if($value->getPrivacy()==1){
+                                $birth='';
+                                $from='';
+                                if($value->getBirth()!=0){
+                                    $birth=date('Y-m-d', $value->getBirth());
+                                }
+                                if($value->getSlacklingFrom()!=0){
+                                    $from=date('Y-m-d', $value->getSlacklingFrom());
+                                }
+                                if ($value->getPhone() != '') {
+                                    echo "<tr><td>Phone number:</td><td>" . $value->getPhone() . "</td></tr>";
+                                }
+                                if($value->getFacebook()!=''){
+                                    echo "<tr><td>Facebook:</td><td><a href='".$value->getFacebook()."' target='_blank'>".$value->getFacebook()."</a></td></tr>";
+                                }
+                                if($value->getTwitter()!=''){
+                                    echo "<tr><td>Twitter:</td><td>".$value->getTwitter()."</td></tr>";
+                                }
+                                if($value->getBirth()!=0){
+                                    echo "<tr><td>Date of birth:</td><td>$birth</td></tr>";
+                                }
+                                if($value->getSlacklingFrom()!=0){
+                                    echo "<tr><td>Slackling from:</td><td>$from</td></tr>"; 
+                                }
+                            }elseif ($value->getPrivacy()==2) {
+                                if(isset($user)){
+                                    $birth='';
+                                    $from='';
+                                    if($value->getBirth()!=0){
+                                        $birth=date('Y-m-d', $value->getBirth());
+                                    }
+                                    if($value->getSlacklingFrom()!=0){
+                                        $from=date('Y-m-d', $value->getSlacklingFrom());
+                                    }
+                                    if($value->getPhone()!=''){
+                                        echo "<tr><td>Phone number:</td><td>".$value->getPhone()."</td></tr>";
+                                    }
+                                    if($value->getFacebook()!=''){
+                                        echo "<tr><td>Facebook:</td><td><a href='".$value->getFacebook()."' target='_blank'>".$value->getFacebook()."</a></td></tr>";
+                                    }
+                                    if($value->getTwitter()!=''){
+                                        echo "<tr><td>Twitter:</td><td>".$value->getTwitter()."</td></tr>";
+                                    }
+                                    if($value->getBirth()!=0){
+                                        echo "<tr><td>Date of birth:</td><td>$birth</td></tr>";
+                                    }
+                                    if($value->getSlacklingFrom()!=0){
+                                        echo "<tr><td>Slackling from:</td><td>$from</td></tr>"; 
+                                    }
+                                }
+                                else{
+                                    echo "Sorry but this user does not want to share this informations with you!!!";
+                                }
+                            }
+                            else{
+                                echo "Sorry but this user does not want to share this informations with you!!!";
+                            }
+                        }
+                    }
+                ?>
+            </table>
+        </form>
+    </fieldset>
+</div>
+<div class='gap'></div>
+<div class="row row-wrap">
+    <div class='span12'>
+        <fieldset>
+            <legend><?=$username?>'s done tricks</legend>
+
+            <div class='new_done_tricks'>
+                <?php 
+                    foreach ($this->doneTricks as $value) {
+                        echo "<div class='box-icon'>".$value->getTrickName()."</div>";
+                    }
+                ?>
+            </div>
+
+        </fieldset>
+    </div>
+</div>

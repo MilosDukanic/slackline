@@ -1,0 +1,138 @@
+<div class="row">
+    <div id='profile_picture' data-toggle="tooltip" title="Click to change">
+        <?php
+            $username='';
+            $id='';
+            foreach ($this->userBasicInfo as $value) {
+                $username=$value->getUsername();
+                $id=$value->getId();
+                echo"<img src='/img/users/profile/".$value->getImg()."' alt='".$value->getName()." profile picture'>";
+            }
+        ?>
+    </div>
+    <form action='/profile/changepicturel' method='POST' enctype="multipart/form-data" style='display: none' id='formPicture'>
+        <?php
+            echo "<input type='hidden' value='$username' name='username'/>"
+                . "<input type='hidden' value='$id' name='id'/>";
+        ?>
+        <input type='file' value='Update' id='ProfilePicture' name='profilePicture'/>
+        <input type='submit' value='Save' id='SaveProfilePicture'/>
+    </form>
+    <fieldset class='profile_info'>
+        <legend>Basic info</legend>
+        <form action='Profile/savebasic' method='POST'>
+            <table>
+                <?php
+                    foreach ($this->userBasicInfo as $value) {
+                        echo "<tr><td>Full Name:</td><td><input type='text' value='".$value->getName()."' id='fullName' name='fullName' pattern='[A-Z][a-z]{2,15}\s[A-Z][a-z]{2,15}' required/></td></tr>
+                            <tr><td>Username:</td><td><input type='text' value='".$value->getUsername()."' id='username' name='username' pattern='[A-Za-z\!\#\@\$\d]{5,}' required/></td></tr>
+                            <tr><td>Password:</td><td><input type='password' id='password' placeholder='new password' name='password' pattern='[A-Za-z\!\#\@\$\d]{5,}'/></td></tr>
+                            <tr><td>Email:</td><td><input type='text' value='".$value->getEmail()."' id='email' name='email'  pattern='[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})' required/></td></tr>
+                            <tr>
+                                <td>Privacy</td>
+                                <td>
+                                    <select  id='privacyBasic' name='privacy'>
+                                        <option value='1'";if($value->getPrivacy()==1) {echo "selected";}echo ">Everybody can see this</option>
+                                        <option value='2' ";if($value->getPrivacy()==2) {echo "selected";}echo ">Only slackliners</option>
+                                    </select>
+                                </td>
+                            </tr>";
+                        echo "<tr><input type='hidden' id='idUser' name='idUser' value='".$value->getId()."'/></td></tr>";
+                    }
+                ?>
+                <tr><td><input type='button' value='Update' class='btn btn-primary' id='basicUpdate'/></td></tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset class='profile_info profile_info_aditional'>
+        <legend>Additional info</legend>
+        <form action='Profile/saveAditional' method='POST'>
+            <table>
+                <?php 
+                    if($this->userAditionalInfo==NULL){
+                        print "
+                            <tr><td>Phone number:</td><td><input type='text' id='phoneNumber' placeholder='exm. +381655554445' name='fullName'  patern='\+3816[0-6][/d]{7}'/></td></tr>
+                            <tr><td>Facebook:</td><td><input type='text'id='facebookLink' placeholder='https://www.facebook.com/...' name='username' /></td></tr>
+                            <tr><td>Twitter:</td><td><input type='text' id='twitterLink' placeholder='https://www.twitter.com/...' name='password' /></td></tr>
+                            <tr><td>Date of birth</td><td><input type='date' id='dateOfBirth' placeholder='Format YYYY-MM-DD' name='password'/></td></tr>
+                            <tr><td>Slackling from</td><td><input type='date' id='slackingFrom' placeholder='Format YYYY-MM-DD' name='password'/></td></tr>
+                            <tr>
+                                <td>Privacy</td>
+                                <td>
+                                    <select id='privacyAditional'>
+                                        <option value='1'";if($value->getPrivacy()==1) {echo "selected";}echo ">Everybody can see this</option>
+                                        <option value='2'";if($value->getPrivacy()==2) {echo "selected";}echo ">Only slackliners</option>
+                                        <option value='3'";if($value->getPrivacy()==3) {echo "selected";}echo ">Only me</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <input type='hidden' id='idUserAdd' name='idUserAdd' value='0'/>";
+                    }
+                    else{
+                        foreach($this->userAditionalInfo as $value){
+                            $birth='';
+                            $from='';
+                            if($value->getBirth()!=0){
+                                $birth=date('Y-m-d', $value->getBirth());
+                            }
+                            if($value->getSlacklingFrom()!=0){
+                                $from=date('Y-m-d', $value->getSlacklingFrom());
+                            }
+                           print "<tr><td>Phone number:</td><td><input type='text' value='".$value->getPhone()."' id='phoneNumber' placeholder='exm. +381655554445' name='fullName'  patern='\+3816[0-6][/d]{7}'/></td></tr>
+                                <tr><td>Facebook:</td><td><input type='text' value='".$value->getFacebook()."' id='facebookLink' placeholder='https://www.facebook.com/...' name='username' /></td></tr>
+                                <tr><td>Twitter:</td><td><input type='text' value='".$value->getTwitter()."' id='twitterLink' placeholder='https://www.twitter.com/...' name='password' /></td></tr>
+                                <tr><td>Date of birth</td><td><input type='date' value='$birth' id='dateOfBirth' placeholder='Format YYYY-MM-DD'/></td></tr>
+                                <tr><td>Slackling from</td><td><input type='date' value='".$from."' id='slackingFrom' placeholder='Format YYYY-MM-DD'/></td></tr>
+                                <tr>
+                                    <td>Privacy</td>
+                                    <td>
+                                        <select id='privacyAditional'>
+                                            <option value='1'";if($value->getPrivacy()==1) {echo "selected";}echo ">Everybody can see this</option>
+                                            <option value='2'";if($value->getPrivacy()==2) {echo "selected";}echo ">Only slackliners</option>
+                                            <option value='3'";if($value->getPrivacy()==3) {echo "selected";}echo ">Only me</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <input type='hidden' id='idUserAdd' name='idUserAdd' value='".$value->getIdTable()."'/>"; 
+                        }
+                    }
+                ?>
+                <tr><td><input type='button' value='Update' class='btn btn-primary' id='aditionalUpdate'/></td></tr>
+            </table>
+        </form>
+    </fieldset>
+</div>
+<div class="gap"></div>
+<div class="row row-wrap">
+    <div class='span5'>
+        <fieldset>
+            <legend>I have done new tricks</legend>
+            <select class='selectedTrick'>
+                <option value='0'>Select trick...</option>
+                <?php 
+                    foreach ($this->undoneTricks as $value) {
+                        echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                    }
+                ?>
+            </select>
+            <div class='done_tricks new_done_tricks'>
+            </div>
+            <div class='gap'></div>
+            <button class='btn btn-primary' id='submitNewTricks'>Submit tricks</button>
+        </fieldset>
+    </div>
+    <div class='span5 remove_done_tricks'>
+        <fieldset>
+            <legend>My done tricks</legend>
+
+            <div class='done_tricks'>
+                <?php 
+                    foreach ($this->doneTricks as $value) {
+                        echo "<a href='".$value->getId()."' class=\"box-icon\" data-toggle=\"tooltip\" title=\"Click to remove\">".$value->getTrickName()."</a>";
+                    }
+                ?>
+            </div>
+
+        </fieldset>
+    </div>
+</div>

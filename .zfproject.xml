@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.12.3">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Setup">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="indoor"/>
+          <actionMethod actionName="outdoor"/>
+          <actionMethod actionName="aframe"/>
+        </controllerFile>
+        <controllerFile controllerName="Tricks">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="type"/>
+          <actionMethod actionName="weight"/>
+        </controllerFile>
+        <controllerFile controllerName="Gear">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="slackline"/>
+        </controllerFile>
+        <controllerFile controllerName="Joinus">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="About">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Autorization">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Authorization">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="registration"/>
+          <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
+        </controllerFile>
+        <controllerFile controllerName="Moderator">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="edit"/>
+          <actionMethod actionName="delete"/>
+          <actionMethod actionName="users"/>
+        </controllerFile>
+        <controllerFile controllerName="Administration">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="remove"/>
+          <actionMethod actionName="user"/>
+        </controllerFile>
+        <controllerFile controllerName="Profile">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="saveBasic"/>
+          <actionMethod actionName="saveAditional"/>
+          <actionMethod actionName="changepicturel"/>
+        </controllerFile>
+        <controllerFile controllerName="Ajax">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="delete"/>
+          <actionMethod actionName="save"/>
+        </controllerFile>
+        <controllerFile controllerName="Blog">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="slacklining"/>
+          <actionMethod actionName="howto"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory>
+        <formFile formName="Login"/>
+        <formFile formName="Signup"/>
+      </formsDirectory>
+      <layoutsDirectory>
+        <layoutScriptsDirectory>
+          <layoutScriptFile layoutName="layout"/>
+        </layoutScriptsDirectory>
+      </layoutsDirectory>
+      <modelsDirectory>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Menu"/>
+          <dbTableFile dbTableName="Tricktype"/>
+          <dbTableFile dbTableName="Trickweight"/>
+          <dbTableFile dbTableName="Trickweightmark"/>
+          <dbTableFile dbTableName="Trick"/>
+          <dbTableFile dbTableName="Gear"/>
+          <dbTableFile dbTableName="Commentgear"/>
+          <dbTableFile dbTableName="Slackline"/>
+          <dbTableFile dbTableName="Setup"/>
+          <dbTableFile dbTableName="Typesetup"/>
+          <dbTableFile dbTableName="Rating"/>
+          <dbTableFile dbTableName="Roles"/>
+          <dbTableFile dbTableName="Brand"/>
+          <dbTableFile dbTableName="Donetrick"/>
+          <dbTableFile dbTableName="Commentslackline"/>
+          <dbTableFile dbTableName="User"/>
+          <dbTableFile dbTableName="Slacklinerating"/>
+          <dbTableFile dbTableName="Useradd"/>
+        </dbTableDirectory>
+        <modelFile modelName="Menu"/>
+        <modelFile modelName="MenuMapper"/>
+        <modelFile modelName="Tricktype"/>
+        <modelFile modelName="Trickweight"/>
+        <modelFile modelName="Trickweightmark"/>
+        <modelFile modelName="Trick"/>
+        <modelFile modelName="Gear"/>
+        <modelFile modelName="Slackline"/>
+        <modelFile modelName="Setup"/>
+        <modelFile modelName="Typesetup"/>
+        <modelFile modelName="Slacklinerating"/>
+        <modelFile modelName="User"/>
+        <modelFile modelName="Roles"/>
+        <modelFile modelName="Brand"/>
+        <modelFile modelName="Donetrick"/>
+        <modelFile modelName="Commentgear"/>
+        <modelFile modelName="Commentslackline"/>
+        <modelFile modelName="TricktypeMapper"/>
+        <modelFile modelName="TrickweightMapper"/>
+        <modelFile modelName="TrickweightmarkMapper"/>
+        <modelFile modelName="TrickMapper"/>
+        <modelFile modelName="GearMapper"/>
+        <modelFile modelName="SlacklineMapper"/>
+        <modelFile modelName="SetupMapper"/>
+        <modelFile modelName="TypesetupMapper"/>
+        <modelFile modelName="SlacklineratingMapper"/>
+        <modelFile modelName="BrandMapper"/>
+        <modelFile modelName="UserMapper"/>
+        <modelFile modelName="RolesMapper"/>
+        <modelFile modelName="DonetrickMapper"/>
+        <modelFile modelName="CommentgearMapper"/>
+        <modelFile modelName="CommentslacklineMapper"/>
+        <modelFile modelName="Useradd"/>
+        <modelFile modelName="UseraddMapper"/>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <servicesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Setup">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Setup">
+            <viewScriptFile forActionName="indoor"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Setup">
+            <viewScriptFile forActionName="outdoor"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Tricks">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Setup">
+            <viewScriptFile forActionName="aframe"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Tricks">
+            <viewScriptFile forActionName="type"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Gear">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Gear">
+            <viewScriptFile forActionName="slackline"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Joinus">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Tricks">
+            <viewScriptFile forActionName="weight"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="About">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Autorization">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authorization">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authorization">
+            <viewScriptFile forActionName="registration"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authorization">
+            <viewScriptFile forActionName="login"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authorization">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Moderator">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administration">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profile">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profile">
+            <viewScriptFile forActionName="saveBasic"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profile">
+            <viewScriptFile forActionName="saveAditional"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profile">
+            <viewScriptFile forActionName="changepicturel"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Moderator">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Moderator">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Moderator">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Moderator">
+            <viewScriptFile forActionName="users"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administration">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administration">
+            <viewScriptFile forActionName="remove"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administration">
+            <viewScriptFile forActionName="user"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Ajax">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Ajax">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Ajax">
+            <viewScriptFile forActionName="save"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Blog">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Blog">
+            <viewScriptFile forActionName="slacklining"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Blog">
+            <viewScriptFile forActionName="howto"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Setup">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="indoor"/>
+            <testApplicationActionMethod forActionName="outdoor"/>
+            <testApplicationActionMethod forActionName="aframe"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Tricks">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="type"/>
+            <testApplicationActionMethod forActionName="weight"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Gear">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="slackline"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Joinus">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="About">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Autorization">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Authorization">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="registration"/>
+            <testApplicationActionMethod forActionName="login"/>
+            <testApplicationActionMethod forActionName="logout"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Moderator">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="add"/>
+            <testApplicationActionMethod forActionName="edit"/>
+            <testApplicationActionMethod forActionName="delete"/>
+            <testApplicationActionMethod forActionName="users"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Administration">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="add"/>
+            <testApplicationActionMethod forActionName="remove"/>
+            <testApplicationActionMethod forActionName="user"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Profile">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="saveBasic"/>
+            <testApplicationActionMethod forActionName="saveAditional"/>
+            <testApplicationActionMethod forActionName="changepicturel"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Ajax">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="delete"/>
+            <testApplicationActionMethod forActionName="save"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Blog">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="slacklining"/>
+            <testApplicationActionMethod forActionName="howto"/>
+          </testApplicationControllerFile>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

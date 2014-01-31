@@ -1,0 +1,295 @@
+<script src="/js/ajaxScript.js"></script>
+<div id='TrickType'></div>
+<fieldset class='modify_elements' id='newTrick'>
+    <legend>Edit trick</legend>
+    <form action='ajax/save' method='POST' id='trick' enctype="multipart/form-data" >
+        <input type='hidden' class='ajaxTableName' value='trick' name='table'/>
+        <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>Choose trick...</option>
+                        <?php
+                            foreach ($this->trick as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='trickType'>
+                        <option>Choose type...</option>
+                        <?php
+                            foreach ($this->trickType as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='trickMark'>
+                        <option>Choose mark...</option>
+                        <?php
+                            foreach ($this->trickWeightMark as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Trick name' name='trickName'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Trick description' name='trickDescription'></textarea></td>
+            </tr>
+            <tr><td><input type='text' placeholder='Trick video' name='trickVideo'/></td></tr>
+             <tr>
+                <td>
+                    <span>Trick image </span> <input type='file' name='trickImage' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+    <span class='alert_text_modify'><b>*</b> If you don't want to change image leave empty field</span>
+</fieldset>
+
+<fieldset class='modify_elements' id='newKit'>
+    <legend>Edit slackline kit</legend>
+    <form action='ajax/save' method='POST' id="gear" enctype="multipart/form-data">
+        <input type='hidden' value='gear' class='ajaxTableName' name='table'/>
+        <table>
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option value='0'>Choose Kit...</option>
+                        <?php
+                            foreach ($this->kit as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+
+            <tr>
+                <td><input type='text' placeholder='Slackline kit name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline kit description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline kit specification' name='specification'></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Kit image </span> <input type='file' name='image' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+    <span class='alert_text_modify'><b>*</b> If you don't want to change image leave empty field</span>
+</fieldset>
+
+<div style='clear:both'></div>
+
+<fieldset class='modify_elements' id='newSlackline'>
+    <legend>Edit Slackline</legend>
+    <form action='ajax/save' method='POST' id='slackline' enctype="multipart/form-data">
+        <input type='hidden' value='slackline' class='ajaxTableName' name='table'/>
+        <table>
+             <tr>
+                 <td>
+                     <select class='ajaxItemId' name='id'>
+                         <option value='0'>Choose Slackline...</option>
+                         <?php
+                             foreach ($this->slackline as $value) {
+                                 echo "<option value='".$value->getId()."'>".$value->getModel()."</option>";
+                             }
+                         ?>
+                     </select>
+                 </td>
+             </tr>
+         </table>
+         <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='brand'>
+                        <option>Choose Brand...</option>
+                        <?php
+                            foreach ($this->brand as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='rating'>
+                        <option>Choose Rating...</option>
+                        <?php
+                            foreach ($this->rating as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Slackline model' name='model'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline pluses' name='plus'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Slackline minuses' name='minus'></textarea></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline length in 'ft' and 'm'" name='length'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline price in '$'" name='price'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder="Slackline video url" name='video'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='width'>
+                        <option>Choose Width...</option>
+                        <option>1"</option>
+                        <option>1.5"</option>
+                        <option>2"</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Slackline </span> <input type='file' name='slacklineImg' required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>For image </span> <input type='file' name='forImg' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" src="" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+    <span class='alert_text_modify'><b>*</b> If you don't want to change images leave empty fields</span>
+</fieldset>
+
+<fieldset class='modify_elements' id='newSetup'>
+    <legend>Edit Setup</legend>
+    <form action='ajax/save' method='POST' id='setup' enctype="multipart/form-data">
+        <input type='hidden' value='setup' class='ajaxTableName' name='table'/>
+        <table> 
+            <tr>
+                <td>
+                    <select class='ajaxItemId' name='id'>
+                        <option>Choose setup...</option>
+                        <?php
+                            foreach ($this->setup as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table class='ajaxContent'>
+            <tr>
+                <td>
+                    <select name='type'>
+                        <option>Choose type...</option>
+                        <?php
+                            foreach ($this->typeSetup as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Setup name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Setup for' name='for'/></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup needed' name='needed'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup warning' name='warning'></textarea></td>
+            </tr>
+            <tr>
+                <td><textarea placeholder='Setup description' name='description'></textarea></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Embede video code, ONLY URL with "https:"' name='video'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Element ID' name='divId'/></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Image </span> <input type='file' name='image' required/>
+                </td>
+            </tr>
+        </table>
+        <iframe name="upload_target" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+            <span class='alert_text_modify'><b>*</b> If you don't want to change image leave empty field</span>
+</fieldset>
+<script type="text/javascript">
+    document.getElementById('trick').onsubmit=function() {
+        document.getElementById('trick').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('gear').onsubmit=function() {
+        document.getElementById('gear').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('slackline').onsubmit=function() {
+        document.getElementById('slackline').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+    document.getElementById('setup').onsubmit=function() {
+        document.getElementById('setup').target = 'upload_target';
+        var marginTop=($(window).height()-140)/2;
+        var marginleft=($(window).width()-340)/2;
+        $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+        $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+    };
+</script>

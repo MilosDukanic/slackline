@@ -1,0 +1,64 @@
+<script src="/js/ajaxScript.js"></script>
+<fieldset class='modify_elements' id='newTrick'>
+    <legend>User list</legend>
+    <form action="#" method='POST'>
+        <table>
+            <tr>
+                <td>
+                    <select class='ajaxUserId'>
+                        <option value='0'>Add new</option>
+                            <?php
+                                foreach ($this->users as $value) {
+                                    if($value->getRole()==1){
+                                        continue;
+                                    }
+                                    echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                                }
+                            ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements ajaxUserContent' >
+    <legend>Add new user</legend>
+    <form action='ajax/save' method='POST' id='mubs' enctype="multipart/form-data">
+        <table>
+            <input type='hidden' class='ajaxTableName' value='user' name="table"/>
+            <input type='hidden' class='ajaxItemId' value='0' name="id"/>
+            <tr>
+                <td>
+                    <select id='userRola' name="rola">
+                        <option value='0'>Choose role</option>
+                        <?php
+                            foreach ($this->roles as $value) {
+                                if($value->getName()=='Head admin'){
+                                    continue;
+                                }
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Full name' id='userFullName' name="name"/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Username' id='userUsername' name='username'/></td>
+            </tr>
+            <tr>
+                <td><input type='password' placeholder='Password' id='userPassword' name='password'/></td>
+            </tr>
+            <tr>
+                <td><input type='email' placeholder='Email address' id='userEmail' name='email'/></td>
+            </tr>
+            <tr>
+                <td><input type='checkbox' id='userActive' name='active' value='1'/><label class='active_user_editing'>Active</label></td>
+            </tr>
+            <tr><td><input type='button' value='Save' class='btn btn-primary ajaxSave'/></td></tr>
+        </table>
+    </form>
+</fieldset>

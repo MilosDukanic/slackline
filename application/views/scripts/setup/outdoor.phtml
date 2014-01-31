@@ -1,0 +1,39 @@
+<div class="row">
+    <div class='span3'>
+        <ul class='green_circle'>
+            <?php 
+                foreach ($this->linkovi as $value) {
+                    echo "$value";
+                }
+            ?>
+        </ul>
+    </div>
+    <div class="span9">
+        <h1>Outdoor set up slackline</h1>
+        <p>You'll probably spend most of your slackline sessions outdoors, in the nature – however. We will show you how you can use anything around you to set up your slackline. But you have to aware that some of these methods are dangerous and you have to be carefull setting tham, but if you set tham properly you have nothing to warry about.</p><br><br>
+        <?php
+            foreach ($this->elements as $value) {
+                echo "<div id='".$value->getDivId()."'>
+                            <h3>".$value->getName()."</h3>
+                            <img src='/img/setup/outdoor/".$value->getImg()."' alt='".$value->getName()."' class='img_setup' />
+                            <p><b>For:</b> ".$value->getFor()."</p>
+                            <p><b>Needed:</b> ".$value->getNeeded()."</p>
+                                 <p>
+                                    <b class='warning'>Warning:</b><b> ".$value->getWarning()."</b>
+                                </p>
+                            <p>
+                                ".$value->getDescription()."
+                            </p><br>
+                            ";
+                            if($value->getVideo()!='//') 
+                            {
+                            echo "
+                                <div class='setup_video'>
+                                    <iframe src='".$value->getVideo()."' frameborder='0' allowfullscreen></iframe>
+                                </div>";
+                            }
+                        echo "</div><div class='gap'></div>";
+            }
+        ?>
+    </div>
+</div>

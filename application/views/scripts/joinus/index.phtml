@@ -1,0 +1,21 @@
+ <div class='join_us_left'>
+    <div class='login_content'>
+        <h3>Member Login</h3>
+        <h5>Welcome back.</h5>
+        <div class="row-fluid">
+            <?php echo $this->formLogin;?>
+        </div>
+        <?php
+            if($this->message=='login'){
+                echo "<p style='color:red; font-size:15px;'>Wrong email or password...</p>";
+            }
+        ?>
+    </div>
+</div>
+<div class='join_us_right'>
+        <h3>Member Register</h3>
+        <h5>Ready to become member? Let's get started!</h5>
+        <div class="row-fluid">
+            <?php echo $this->formSignup;?>
+        </div>
+</div>

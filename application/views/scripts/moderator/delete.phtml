@@ -1,0 +1,106 @@
+<script src="/js/ajaxScript.js"></script>
+<fieldset class='modify_elements' id='newTrick'>
+    <legend>Delete trick</legend>
+    <form action='#' method='POST'>
+    <input type='hidden' class='ajaxTableName' value='trick'/>
+        <table>
+            <tr>
+                <td>
+                    <select name='trick' class='ajaxItemId'>
+                        <option value='0'>Choose trick...</option>
+                        <?php
+                            foreach ($this->trick as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='Delete' class='btn btn-primary ajaxDelete' />
+                </td>
+            </tr>
+        </table>
+    </form>          
+</fieldset>
+
+<fieldset class='modify_elements' id='newKit'>
+    <legend>Delete slackline kit</legend>
+    <form action='#' method='POST'>
+    <input type='hidden' class='ajaxTableName' value='gear'/>
+        <table>
+            <tr>
+                <td>
+                    <select name='gear' class='ajaxItemId'>
+                        <option value='0'>Choose Kit...</option>
+                        <?php
+                            foreach ($this->kit as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='Delete' class='btn btn-primary ajaxDelete' />
+                </td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+
+<div style='clear:both'></div>
+
+<fieldset class='modify_elements' id='newSlackline'>
+    <legend>Delete Slackline</legend>
+    <form action='#' method='POST'>
+    <input type='hidden' class='ajaxTableName' value='slackline'/>
+        <table>
+            <tr>
+                <td>
+                    <select name='model' class='ajaxItemId'>
+                        <option value='0'>Choose model...</option>
+                        <?php
+                            foreach ($this->slackline as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getModel()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='Delete' class='btn btn-primary ajaxDelete' />
+                </td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+
+<fieldset class='modify_elements' id='newSetup'>
+    <legend>Delete Setup</legend>
+    <form action='#' method='POST'>
+    <input type='hidden' class='ajaxTableName' value='setup'/>
+        <table>
+             <tr>
+                <td>
+                    <select name='setup' class='ajaxItemId'>
+                        <option value='0'>Choose setup...</option>
+                        <?php
+                            foreach ($this->setup as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='Delete' class='btn btn-primary ajaxDelete' />
+                </td>
+            </tr>
+        </table>
+    </form>
+</fieldset>

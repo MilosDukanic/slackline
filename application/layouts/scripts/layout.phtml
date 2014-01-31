@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+    <?php echo $this->headTitle() ;?>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="Koupon HTML5 Template" />
+    <meta name="description" content="Koupon - Premiun HTML5 Template for Coupons Website">
+    <meta name="author" content="Tsoy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/boostrap.css">
+    <link rel="stylesheet" href="/css/boostrap_responsive.css">
+    <link rel="stylesheet" href="/css/font_awesome.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- IE 8 Fallback -->
+    <!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/css/mystyles.css">
+</head>
+
+<body>
+    <div id='ajaxResponse'>
+    </div>
+<header class="main">
+    <div class="container">
+        <div class="row">
+            <div class="span2">
+                <a href="#">
+                    Logo
+                </a>
+            </div>
+            <div class="span8">
+                <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
+                <?php 
+                    print $this->placeholder('menu');
+                ?>
+            </div>
+            <div class="span2">
+                <ul class="login-register">
+                    <?php
+                        $autentification= Zend_Auth::getInstance();
+                        if(!$autentification->hasIdentity()){
+                            echo ' <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="icon-signin"></i>Sign in</a>
+                    </li>
+                    <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="icon-edit"></i>Sign up</a>
+                    </li>';                        
+                        }
+                    ?>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <?php
+        $autentification= Zend_Auth::getInstance();
+        if(!$autentification->hasIdentity()){
+          echo '<div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+                    <i class="icon-signin dialog-icon"></i>
+                    <h3>Member Login</h3>
+                    <h5>Welcome back, friend. Login to get started</h5>
+                    <div class="row-fluid">
+                        <form class="dialog-form" action="/authorization/login" method="POST">
+                            <label>E-mail</label>
+                            <input type="text" placeholder="email@domain.com" class="span12" name="email" pattern="[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" required/>
+                            <label>Password</label>
+                            <input type="password" placeholder="My secret password" class="span12" name="password" pattern="[A-Za-z\!\#\@\$\d]{5,}" required />
+                            <label class="checkbox">
+                                <input type="checkbox" name="rememberMe" />Remember me
+                            </label>
+                            <input type="submit" value="Sign in" class="btn btn-primary">
+                        </form>
+                    </div>
+                    <ul class="dialog-alt-links">
+                        <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">Not member yet</a>
+                        </li>
+                        <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Forgot password</a>
+                        </li>
+                    </ul>
+                </div>
+            
+            <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+                <i class="icon-edit dialog-icon"></i>
+                <h3>Member Register</h3>
+                <h5>Ready to get best offers? Let\'s get started!</h5>
+                <div class="row-fluid">
+                    <form class="dialog-form" action="/authorization/registration" method="POST" enctype="multipart/form-data">
+                        <label>Your name</label>
+                        <input type="text" name="fullName" placeholder="Your full name" class="span12" pattern="[A-Z][a-z]{2,15}\s[A-Z][a-z]{2,15}" required/>
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="D0m!nator" class="span12" pattern="[A-Za-z\!\#\@\$\d]{5,}" required/>
+                        <label>E-mail</label>
+                        <input type="text" name="email" placeholder="email@domain.com" class="span12" pattern="[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" required/>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="My secret password" class="span12" pattern="[A-Za-z\!\#\@\$\d]{5,}" required/>
+                        <label>Repeat Password</label>
+                        <input type="password" name="rePassword" placeholder="Type your password again" class="span12" pattern="[A-Za-z\!\#\@\$\d]{5,}" required/>
+                        <label>Profile picture &nbsp;&nbsp;
+                            <input type="file"  name="profilePicture"/>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="subscribe" checked>Subscribe for news feed
+                        </label>
+                        <input type="submit" value="Sign up" class="btn btn-primary">
+                    </form>
+                </div>
+                <ul class="dialog-alt-links">
+                    <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="password-recover-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+                <i class="icon-retweet dialog-icon"></i>
+                <h3>Password Recovery</h3>
+                <h5>Fortgot your password? Don\'t worry we can deal with it</h5>
+                <div class="row-fluid">
+                    <form class="dialog-form">
+                        <label>E-mail</label>
+                        <input type="text" placeholder="email@domain.com" class="span12"pattern="[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" required/>
+                        <input type="submit" value="Request new password" class="btn btn-primary"/>
+                    </form>
+                </div>
+            </div>';
+        }
+    ?>
+
+
+
+    
+<?php echo $this->placeholder('topArea'); ?>
+
+<div class="gap"></div>
+
+<div class="container">
+   <?php echo $this->layout()->content; ?>
+   <div class="gap"></div>
+</div>
+    
+<footer class="main">
+    <div class="gap"></div>
+    <div class="container">
+        <div class="row row-wrap">
+            <div class="span3">
+                <h5>About SlackLife SRB</h5>
+                <p>Our story begins in the summer 2012th year. when friends climbing in Thailand brought a very fun toy - slackline. 
+                    Boki and Nemanja were already rehearsed walking and quite a few tricks in this simple but miraculous made. 
+            It created a whole group of young enthusiasts, mostly climbers, who almost every day asking slackline in the exercise.</p>
+            </div>
+            <div class="span2">
+                <h5>Get Help</h5>
+                <ul class="list">
+                    <li><a href="/index">Home</a>
+                    </li>
+                    <li><a href="/trick">Tricks</a>
+                    </li>
+                    <li><a href="/gear">Gear</a>
+                    </li>
+                    <li><a href="/joinus">Join us</a>
+                    </li>
+                    <li><a href="/about">About us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5>Keep in touch</h5>
+                <p>Like us, follow us, share us... Keep in touch on social network.</p>
+                <ul class="list list-social">
+                    <li>
+                        <a href="/" class="icon-facebook box-icon" data-toggle="tooltip" title="Facebook"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-twitter box-icon" data-toggle="tooltip" title="Twitter"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-flickr box-icon" data-toggle="tooltip" title="Flickr"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-linkedin box-icon" data-toggle="tooltip" title="Linkedin"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-tumblr box-icon" data-toggle="tooltip" title="Tumblr"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Scripts queries -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/boostrap.min.js"></script>
+    <script src="/js/nivo_slider.min.js"></script>
+    <script src="/js/flexnav.min.js"></script>
+    <script src="/js/nivo_slider.min.js"></script>
+    <script src="/js/magnific.min.js"></script>
+   <!-- <script src="/js/tweet.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="/js/gmap3.min.js"></script>
+    <script src="/js/wilto_slider.min.js"></script>
+    <script src="/js/mediaelement.min.js"></script>
+    <script src="/js/fitvids.min.js"></script>
+    <script src="/js/mail.min.js"></script>-->
+
+    <!-- Custom scripts -->
+    <script src="/js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class='span3'>
+        <aside class="sidebar-left">
+            <h4>Slackline tricks</h4>
+            <ul class="green_circle">
+                <li><a href='/tricks/weight'>Weight</a>
+                    <ul class="green_circle">
+                        <?php 
+                            foreach ($this->weight as $value) {
+                                echo "$value";
+                            }
+                        ?>
+                    </ul>
+                </li>
+                <li><a href='/tricks/type'>Type</a>
+                    <ul class="green_circle">
+                        <?php 
+                            foreach ($this->type as $value) {
+                                echo "$value";
+                            }
+                        ?>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </div>
+    <div class="span9">
+        <?php 
+            echo $this->nesto;
+            foreach ($this->tricks as $value) {
+                echo "<div class='one_trick'>
+                        <img src='/img/tricks/type/".strtolower($value->getIdType()).".png' alt='".$value->getIdType()." logo icon' class='trick_corner_type'/>
+                        <h3>".$value->getName()."</h3>
+                        <a href='".$value->getVideo()."' target='_blank' class='one_trick_link'>
+                            <img src='/img/tricks/".$value->getImage()."' alt='".$value->getImage()." slackline trick' title='Click to watch youtube video' data-toggle='tooltip'/>
+                        </a>
+                        <span class='one_trick_type'><b>Type:</b> <a href='".$this->url(array('controller'=>'tricks','action'=>'type','type'=>strtolower($value->getIdType())),null,TRUE)."'>".$value->getIdType()."</a></span>
+                        <span class='one_trick_grade'><b>Grade:</b> <a href='".$this->url(array('controller'=>'tricks','action'=>'weight','type'=>strtolower($value->getMarkLink())),null,TRUE)."'><b class='one_trick_mark'>".$value->getIdMark()."</b></a></span>
+                        <p>
+                            ".$value->getDescription()."
+                        </p>
+                    </div>";
+            }
+        ?>
+    </div>
+</div>

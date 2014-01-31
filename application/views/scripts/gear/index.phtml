@@ -1,0 +1,45 @@
+<table class='gear_slacklines' id='gear-slacklines' >
+        <thead>
+            <th></th>
+            <th>Model</th>
+            <th>Width</th>
+            <th>Length</th>
+            <th>For</th>
+            <th>Price</th>
+            <th>Our ratin</th>
+        </thead>
+        <tbody>
+            <?php 
+            foreach ($this->slacklines as $value) {
+                $url= $this->url(array('controller'=>'gear','action'=>'slackline','type'=>strtolower($value->getModel())),null,TRUE);
+                echo "<tr>
+                <td><img src='/img/slacklines/".$value->getImage()."' alt='".$value->getIdBrand()." ".$value->getModel()." slackline' class='slackline_image'/></td>
+                <td><a href='$url'>".$value->getModel()."</a></td>
+                <td>".$value->getWidth()."</td>
+                <td>".$value->getLength()."</td>
+                <td><img src='img/slacklines/slackline_for/".$value->getForImg()."' alt='".$value->getModel()." slackline review' class='slackline_sidebar'></td>
+                <td>".$value->getPrice()."</td>
+                <td><img src='img/rating/".$value->getRatingImg()."' alt='".$value->getRatingAlt()."' class='slackline_rating'></td>
+                </tr>";
+            }
+            ?>
+            
+        </tbody>
+ </table>
+<?php
+    foreach ($this->gear as $value) {
+        echo "<div class='gear_item_other'>
+            <div class='gap'></div>
+           <h4>".$value->getName()."</h4>
+
+           <div class='gear_item_specification'>
+           <img src='img/gear/".$value->getImage()."' alt='".$value->getName()." slackline' >
+               <ul>
+                   ".$value->getSpecification()."
+               </ul>
+           </div>
+           <p>".$value->getDescription()."</p>
+       </div>";
+    }
+?>
+  

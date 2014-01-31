@@ -1,0 +1,83 @@
+<script src="/js/ajaxScript.js"></script>
+<fieldset class='modify_elements' id='newTrick'>
+    <legend>User list</legend>
+    <table>
+        <tr>
+            <td>
+                <select class='ajaxAdminUserId'>
+                    <option value='0'>Add new</option>
+                    <?php
+                        foreach ($this->users as $value) {
+                            echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                        }
+                    ?>
+                </select>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset class='modify_elements ajaxUserContent' id='newKit'>
+    <legend>Add new user</legend>
+    <form action='ajax/save' method='POST' id='adminUser' enctype="multipart/form-data">
+        <input type='hidden' value='user' name='table' class='ajaxTableName'/>
+        <input type='hidden' value='0' name='id' class='ajaxTableName'/>
+        <table>
+            <tr>
+                <td>
+                    <select name='rola'>
+                        <option value='0'>Choose role</option>
+                        <?php
+                            foreach ($this->roles as $value) {
+                                echo "<option value='".$value->getId()."'>".$value->getName()."</option>";
+                            }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Full name' name='name'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Username' name='username'/></td>
+            </tr>
+            <tr>
+                <td><input type='password' placeholder='Password' name='password'/></td>
+            </tr>
+            <tr>
+                <td><input type='email' placeholder='Email address' name='email'/></td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='Security code' name='code'/></td>
+            </tr>
+            <tr>
+                <td><input type='checkbox' name='active'/><label class='active_user_editing'>Active</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name='privacy'>
+                        <option value='0'>Choose privacy...</option>
+                        <option value='1'>Everybody</option>
+                        <option value='2'>Only slackliners</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>User image </span> <input type='file' name='image'/>
+                </td>
+            </tr>
+        </table> 
+        <iframe name="upload_target" src="" style="width:0px;height:0px;border:0px solid #fff;"></iframe>
+        <input type='submit' value='Save' class='btn btn-primary'/>
+    </form>
+    <script type="text/javascript">
+        document.getElementById('adminUser').onsubmit=function() {
+            document.getElementById('adminUser').target = 'upload_target';
+            var marginTop=($(window).height()-140)/2;
+            var marginleft=($(window).width()-340)/2;
+            $('#ajaxResponse').html("<div id='ajaxResponseContent'><div id='ajaxResponseContentText'>Item has been saved!!!</div></div>");
+            $('#ajaxResponse').css({'margin-top':marginTop,'margin-left':marginleft,'display':'block'}).animate({'opacity':0.95},500).animate({'opacity':0.95},2000).animate({'opacity':0},800);
+        };
+    </script>
+</fieldset>
